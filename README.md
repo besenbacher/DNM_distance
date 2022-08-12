@@ -10,7 +10,7 @@ For the R plotting script to work the `tidyverse` and `Hmisc` packages needs to 
 
 ## Input files
 The de novo mutations should be in a txt file with the following columns: chrom, pos, alt, ref, sample_id. Where sample_id is an identifier of which proband the mutation occured in.
-The program also requires a bed-file listing which regions are sufficiently covered by the sequencing. This file needs to be sorted first by chromosome (alphabetically) and then position (numerically). If no bed-file is available a bed-file listing all chromosomes as covered can be created from a list of chromosome lengths like this:
+The program also requires a bed-file listing which regions are sufficiently covered by the sequencing. Both files needs to be sorted first by chromosome (alphabetically) and then position (numerically). If no bed-file is available a bed-file listing all chromosomes as covered can be created from a list of chromosome lengths like this:
 ```
 cat chromSizes_hg38.txt | awk -v OFS="\t" '{print $1,"0",$2}' | sort -k1,1 -k2,2n > all_chromosomes_hg38.bed
 ```
