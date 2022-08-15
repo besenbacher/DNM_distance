@@ -181,16 +181,6 @@ def do_analysis(mutfile, bedfile, tb, n_random):
                           list_median(random_notsame_list)):
         print(x1, x2, x3, "notsame")
 
-    
- 
-for chrom in autosomes:
-    for i in range(len(chrom_poses[chrom])):
-        for j in range(i+1,len(chrom_poses[chrom])):
-            pos_i, pn_i = chrom_poses[chrom][i]
-            pos_j, pn_j = chrom_poses[chrom][j]
-            print abs(pos_i-pos_j),
-            print int(pn_i==pn_j)
-
 
 def dist_to_closest(intposses, index, possible_pn):
     bestres = 9e10

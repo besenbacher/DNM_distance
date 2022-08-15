@@ -2,6 +2,7 @@
 
 import argparse
 import py2bit
+import sys
 #from DNM_distance.distance_functions import do_analysis
 from distance_functions import do_analysis
 
