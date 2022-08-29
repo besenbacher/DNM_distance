@@ -30,7 +30,7 @@ Make plot:
 ```
 To analyse all pairwise mutations:
 ```
-python src/DNM_distance/all_pair_distances.py test_data/decode2019_mutations_chr21_chr22_hg38.gor| gzip > all_pair.txt.gz
+python src/all_pair_distances.py test_data/decode2019_mutations_chr21_chr22_hg38.gor| gzip > all_pair.txt.gz
 ```
 Make plot:
 ```
