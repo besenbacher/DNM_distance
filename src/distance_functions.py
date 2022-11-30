@@ -14,7 +14,7 @@ def pos_to_int(chrom, pos, cum_length):
 #Loeb callability fil igennem og udregn hvilken chrom og pos hvert r svarer til
 
 
-def do_analysis(mutfile, bedfile, tb, n_random):
+def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfile = None):
     all_pns = set()
     n_cpg = Counter()
     n_cg = Counter()
@@ -57,6 +57,9 @@ def do_analysis(mutfile, bedfile, tb, n_random):
     f.close()
     intposses.sort()
 
+    if not obs_outfile is None:
+        for pos, pn in intposses:
+            print(pos, pn, file = obs_outfile)
 
     obs_any, obs_same, obs_notsame = get_dist_lists(intposses, all_pns, cum_sum)
     eprint("observed", len(obs_any), len(obs_same), len(obs_notsame))
@@ -156,6 +159,11 @@ def do_analysis(mutfile, bedfile, tb, n_random):
                     next_at = L_at.pop()
                 else:
                     next_at = (csum_at +10000, -1, -1)
+
+    if not random_outfile is None:
+        for i in range(n_random):
+            for pos, pn in random_intposses[i]:
+                print(pos, pn, i, file = random_outfile)
 
     random_any_list = []
     random_same_list = []

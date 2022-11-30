@@ -39,6 +39,10 @@ def main(args = None):
 
     parser.add_argument('--bed', type=str,
         help='bed-file describing regions that should be counted. May be gzipped.')
+    
+    parser.add_argument('--obs_intpos', type=argparse.FileType('w'), default = None)
+    parser.add_argument('--random_intpos', type=argparse.FileType('w'), default = None)
+
     # parser.add_argument('--wig', type=str,
     #     help='wig-file describing regions that should be counted. May be gzipped. '
     #         'The context at a position will be weigthed by the value from the '
@@ -63,7 +67,7 @@ def main(args = None):
 
     tb = py2bit.open(args.ref_genome)
 
-    do_analysis(args.mutations, args.bed, tb, args.n_random)
+    do_analysis(args.mutations, args.bed, tb, args.n_random, args.obs_intpos, args.random_intpos)
     return 0
 
 if __name__ == "__main__":
