@@ -42,6 +42,8 @@ def main(args = None):
     
     parser.add_argument('--obs_intpos', type=argparse.FileType('w'), default = None)
     parser.add_argument('--random_intpos', type=argparse.FileType('w'), default = None)
+    #parser.add_argument('--obs_intpos', type=argparse.FileType('w'), default = None)
+    parser.add_argument('--random_chrompos', type=argparse.FileType('w'), default = None)
 
     # parser.add_argument('--wig', type=str,
     #     help='wig-file describing regions that should be counted. May be gzipped. '
@@ -67,7 +69,7 @@ def main(args = None):
 
     tb = py2bit.open(args.ref_genome)
 
-    do_analysis(args.mutations, args.bed, tb, args.n_random, args.obs_intpos, args.random_intpos)
+    do_analysis(args.mutations, args.bed, tb, args.n_random, args.obs_intpos, args.random_intpos, args.random_chrompos)
     return 0
 
 if __name__ == "__main__":

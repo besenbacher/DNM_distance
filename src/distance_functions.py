@@ -14,7 +14,13 @@ def pos_to_int(chrom, pos, cum_length):
 #Loeb callability fil igennem og udregn hvilken chrom og pos hvert r svarer til
 
 
-def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfile = None):
+def print_chrom_pos(chrom, pos, next_tuple, outfile):
+    if not outfile is None:
+        _, pn, i = next_tuple
+        print(f'{chrom} {pos} {pn} {i}', file = outfile)
+
+
+def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfile = None, random_chrompos_outfile = None):
     all_pns = set()
     n_cpg = Counter()
     n_cg = Counter()
@@ -139,6 +145,7 @@ def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfi
             cur_cpg += callability
             while cur_cpg > next_cpg[0] and next_cpg[2] != -1:
                 random_intposses[next_cpg[2]].append((pos_to_int(chrom,pos, cum_length), next_cpg[1]))
+                print_chrom_pos(chrom, pos, next_cpg, random_chrompos_outfile)
                 if len(L_cpg) > 0:
                     next_cpg = L_cpg.pop()
                 else:
@@ -147,6 +154,7 @@ def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfi
             cur_cg += callability
             while cur_cg > next_cg[0] and next_cg[2] != -1:
                 random_intposses[next_cg[2]].append((pos_to_int(chrom,pos, cum_length), next_cg[1]))
+                print_chrom_pos(chrom, pos, next_cg, random_chrompos_outfile)
                 if len(L_cg) > 0:
                     next_cg = L_cg.pop()
                 else:
@@ -155,6 +163,7 @@ def do_analysis(mutfile, bedfile, tb, n_random, obs_outfile = None, random_outfi
             cur_at += callability
             while cur_at > next_at[0] and next_at[2] != -1:
                 random_intposses[next_at[2]].append((pos_to_int(chrom,pos, cum_length), next_at[1]))
+                print_chrom_pos(chrom, pos, next_at, random_chrompos_outfile)
                 if len(L_at) > 0:
                     next_at = L_at.pop()
                 else:
