@@ -29,7 +29,7 @@ def main(args = None):
 
     parser.add_argument('mutations', 
         type=str, 
-        help='A file with de novo mutations. First four columns should be: Chrom, pos, ref, alt, pn'
+        help='A file with de novo mutations. First four columns should be: Chrom, pos, ref, alt, pn. '
         'Other columns are ignored. Non-SNV variants are ignored.')
     parser.add_argument('ref_genome', 
         help='Reference genome in 2bit format', type=str)

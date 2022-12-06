@@ -53,7 +53,6 @@ def main(args = None):
             D[L[PN_INDEX]] = []
         D[L[PN_INDEX]].append([L[0], int(L[1]),line.strip(),cutoff,cutoff])
 
-    print(len(D))
     for pn in D:
         lines = D[pn]
         for i in range(0, len(lines)-1):
